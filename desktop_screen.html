@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+
+<html lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Clinical Sanctuary | Bangmun Doctor</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Public+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-surface": "#181c1e",
+                      "on-error-container": "#93000a",
+                      "on-primary-fixed-variant": "#003fa4",
+                      "on-secondary-container": "#48617e",
+                      "inverse-primary": "#b3c5ff",
+                      "surface-variant": "#e0e3e6",
+                      "on-tertiary-fixed": "#390c00",
+                      "on-primary-fixed": "#001849",
+                      "inverse-surface": "#2d3133",
+                      "secondary-container": "#c2dcfe",
+                      "primary-fixed": "#dae1ff",
+                      "outline-variant": "#c2c6d8",
+                      "on-secondary-fixed-variant": "#2f4864",
+                      "on-error": "#ffffff",
+                      "secondary": "#47607d",
+                      "outline": "#727687",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-fixed-dim": "#ffb59d",
+                      "tertiary-fixed": "#ffdbd0",
+                      "tertiary-container": "#cc4204",
+                      "surface": "#f7fafd",
+                      "on-primary": "#ffffff",
+                      "error": "#ba1a1a",
+                      "surface-container-low": "#f1f4f7",
+                      "surface-dim": "#d7dadd",
+                      "primary": "#0050cb",
+                      "inverse-on-surface": "#eef1f4",
+                      "secondary-fixed-dim": "#afc9ea",
+                      "surface-tint": "#0054d6",
+                      "on-secondary-fixed": "#001d36",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary-container": "#fff6f4",
+                      "surface-bright": "#f7fafd",
+                      "primary-container": "#0066ff",
+                      "tertiary": "#a33200",
+                      "surface-container-high": "#e5e8eb",
+                      "surface-container-highest": "#e0e3e6",
+                      "on-surface-variant": "#424656",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-container": "#f8f7ff",
+                      "on-background": "#181c1e",
+                      "background": "#f7fafd",
+                      "on-tertiary-fixed-variant": "#832600",
+                      "error-container": "#ffdad6",
+                      "secondary-fixed": "#d1e4ff",
+                      "primary-fixed-dim": "#b3c5ff",
+                      "surface-container": "#ebeef1"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Manrope"],
+                      "body": ["Public Sans"],
+                      "label": ["Public Sans"]
+              }
+            },
+          }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tonal-shift { background-color: #f7fafd; }
+        .glass-nav {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+        }
+        body {
+            font-family: 'Public Sans', sans-serif;
+            background-color: #f7fafd;
+            color: #181c1e;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Manrope', sans-serif;
+        }
+    </style>
+</head>
+<body class="antialiased">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 glass-nav shadow-[0_4px_20px_rgba(0,0,0,0.04)] h-20 flex justify-between items-center px-12 max-w-full">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2 text-blue-700">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">home_health</span>
+<span class="text-2xl font-bold tracking-tight text-blue-700">방문닥터</span>
+</div>
+<div class="hidden md:flex items-center bg-surface-container-low px-4 py-2.5 rounded-full w-96 gap-3 focus-within:ring-2 ring-primary/20 transition-all">
+<span class="material-symbols-outlined text-outline">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full font-body placeholder:text-outline" placeholder="병원, 진료과, 증상을 검색하세요" type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4">
+<a class="text-slate-600 font-medium hover:text-primary transition-colors text-sm" href="#">로그인</a>
+<a class="bg-primary text-white px-5 py-2 rounded-full font-bold text-sm hover:bg-primary-container transition-all shadow-md" href="#">회원가입</a>
+</div>
+<div class="flex items-center gap-4 border-l border-slate-200 pl-8">
+<button class="p-2 text-slate-600 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+<button class="p-2 text-slate-600 hover:text-primary transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-tertiary rounded-full"></span>
+</button>
+<button class="p-2 text-slate-600 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">person</span>
+</button>
+</div>
+</div>
+</nav>
+<main class="mt-20">
+<!-- Hero Section -->
+<section class="relative h-[312px] w-full flex items-center overflow-hidden bg-gradient-to-br from-primary to-primary-container">
+<div class="absolute inset-0 opacity-20">
+<img alt="medical sanctuary hero" class="w-full h-full object-cover mix-blend-overlay" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6Kzcu4VuD5PYAb_qRr2idJFMdHUiXzU_GcMlsbZt2vPbTgkS6LWb4HhJWe4AKOhnW_nfbibPcVIkGG6rwcva8EECtMKl709eRVy66hLte17GgaexuC0WB3Jg1IwbvEbC2D4q81HLms0fHWn7ONQwaq1X3RZpWTHXBwhoC9LtFo--orQgPTfj4WjubrUxpKmYaIRT01I6AD2XQ2XCth_rYn6qL8IrDAt-sZ3tWzt39T0Zg9Gi0dipuXUH2swPvTdOWupc0v8Hf1II"/>
+</div>
+<div class="container mx-auto px-12 relative z-10">
+<div class="max-w-2xl space-y-4">
+<span class="inline-block px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-white font-bold text-xs tracking-wider uppercase">Hot Issue</span>
+<h1 class="text-4xl md:text-5xl font-extrabold text-white leading-tight">
+                        방문진료, 방문재활 1위<br/>방문닥터와 함께하세요
+                    </h1>
+<p class="text-blue-100 text-lg font-body">최고 수준의 전문 의료진이 당신의 집으로 직접 찾아갑니다.</p>
+</div>
+</div>
+</section>
+<!-- Service Selection -->
+<section class="container mx-auto px-12 -mt-10 relative z-20">
+<div class="flex gap-6">
+<button class="flex-1 bg-surface-container-lowest p-6 rounded-2xl shadow-lg border-b-4 border-primary flex items-center justify-between group hover:scale-[1.02] transition-transform">
+<div>
+<h3 class="text-xl font-bold text-primary mb-1">방문진료</h3>
+<p class="text-on-surface-variant text-sm">거동이 불편하신 분들을 위한 전문 진료 서비스</p>
+</div>
+<span class="material-symbols-outlined text-4xl text-primary opacity-40 group-hover:opacity-100 transition-opacity">home_health</span>
+</button>
+<button class="flex-1 bg-surface-container-lowest p-6 rounded-2xl shadow-lg flex items-center justify-between group hover:scale-[1.02] transition-transform">
+<div>
+<h3 class="text-xl font-bold text-on-surface mb-1 text-slate-700">방문재활</h3>
+<p class="text-on-surface-variant text-sm">일상 복귀를 돕는 체계적인 1:1 맞춤 재활</p>
+</div>
+<span class="material-symbols-outlined text-4xl text-slate-300 group-hover:text-primary group-hover:opacity-100 transition-all">physical_therapy</span>
+</button>
+</div>
+</section>
+<!-- Department Grid -->
+<section class="container mx-auto px-12 py-12">
+<div class="flex justify-between items-end mb-6">
+<div>
+<h2 class="text-2xl font-extrabold text-on-surface mb-1">진료과목 선택</h2>
+<p class="text-on-surface-variant text-sm">원하시는 전문 분야를 선택하여 맞춤 의료진을 찾아보세요.</p>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+<div class="bg-surface-container-low p-5 rounded-2xl flex flex-col items-center justify-center gap-3 hover:bg-primary/5 transition-colors cursor-pointer group">
+<div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center group-hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined text-primary text-2xl">grid_view</span>
+</div>
+<span class="font-semibold text-on-surface text-sm">전체</span>
+</div>
+<div class="bg-surface-container-low p-5 rounded-2xl flex flex-col items-center justify-center gap-3 hover:bg-primary/5 transition-colors cursor-pointer group">
+<div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center group-hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined text-primary text-2xl">stethoscope</span>
+</div>
+<span class="font-semibold text-on-surface text-sm">내과</span>
+</div>
+<div class="bg-surface-container-low p-5 rounded-2xl flex flex-col items-center justify-center gap-3 hover:bg-primary/5 transition-colors cursor-pointer group">
+<div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center group-hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined text-primary text-2xl">accessibility_new</span>
+</div>
+<span class="font-semibold text-on-surface text-sm">재활의학과</span>
+</div>
+<div class="bg-surface-container-low p-5 rounded-2xl flex flex-col items-center justify-center gap-3 hover:bg-primary/5 transition-colors cursor-pointer group">
+<div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center group-hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined text-primary text-2xl">family_restroom</span>
+</div>
+<span class="font-semibold text-on-surface text-sm">가정의학과</span>
+</div>
+<div class="bg-surface-container-low p-5 rounded-2xl flex flex-col items-center justify-center gap-3 hover:bg-primary/5 transition-colors cursor-pointer group">
+<div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center group-hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined text-primary text-2xl">child_care</span>
+</div>
+<span class="font-semibold text-on-surface text-sm">소아청소년과</span>
+</div>
+<div class="bg-surface-container-low p-5 rounded-2xl flex flex-col items-center justify-center gap-3 hover:bg-primary/5 transition-colors cursor-pointer group">
+<div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center group-hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined text-primary text-2xl">hearing</span>
+</div>
+<span class="font-semibold text-on-surface text-sm">이비인후과</span>
+</div>
+<div class="bg-surface-container-low p-5 rounded-2xl flex flex-col items-center justify-center gap-3 hover:bg-primary/5 transition-colors cursor-pointer group">
+<div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center group-hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined text-primary text-2xl">face_6</span>
+</div>
+<span class="font-semibold text-on-surface text-sm">피부과</span>
+</div>
+<div class="bg-surface-container-low p-5 rounded-2xl flex flex-col items-center justify-center gap-3 hover:bg-primary/5 transition-colors cursor-pointer group">
+<div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center group-hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined text-primary text-2xl">psychiatry</span>
+</div>
+<span class="font-semibold text-on-surface text-sm">정신의학과</span>
+</div>
+<div class="bg-surface-container-low p-5 rounded-2xl flex flex-col items-center justify-center gap-3 hover:bg-primary/5 transition-colors cursor-pointer group">
+<div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center group-hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined text-primary text-2xl">female</span>
+</div>
+<span class="font-semibold text-on-surface text-sm">산부인과</span>
+</div>
+<div class="bg-surface-container-low p-5 rounded-2xl flex flex-col items-center justify-center gap-3 hover:bg-primary/5 transition-colors cursor-pointer group">
+<div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center group-hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined text-primary text-2xl">visibility</span>
+</div>
+<span class="font-semibold text-on-surface text-sm">안과</span>
+</div>
+</div>
+</section>
+<!-- Recommendation Section -->
+<section class="bg-surface-container-low py-16">
+<div class="container mx-auto px-12">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-6">
+<div>
+<h2 class="text-3xl font-extrabold text-primary mb-2">우리 동네 병원 맞춤 추천</h2>
+<p class="text-on-surface-variant">현재 진료 가능 여부와 거리를 고려한 최적의 추천입니다.</p>
+</div>
+<div class="flex gap-3">
+<span class="px-5 py-2 bg-primary text-white rounded-full text-sm font-semibold shadow-md flex items-center gap-2">
+<span class="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+                            지금 진료중
+                        </span>
+<span class="px-5 py-2 bg-white text-on-surface-variant border border-outline-variant/30 rounded-full text-sm font-semibold hover:bg-slate-50 cursor-pointer transition-colors">
+                            토요일 진료
+                        </span>
+</div>
+</div>
+<!-- Hospital List -->
+<div class="space-y-6">
+<!-- Hospital Card 1 -->
+<div class="bg-white rounded-2xl overflow-hidden flex shadow-sm hover:shadow-md transition-shadow group cursor-pointer border border-transparent hover:border-primary/10 h-40">
+<div class="w-64 overflow-hidden">
+<img alt="hospital facade" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPB703cCjBu3MmlOblnzlc2W2JiGUMQA70XQx1fsMGk__XZac7iPSOzxJGqEjDvJLly3GPwF0ak2dEoa4RgF8E8u1aNBcdbMVrTH0w_sTLpphj1y8xf4AxNrM6hROG6A7WBFs9yIRI1ykXyC3TaayioMyGJ11g5C4w6JkiycbbjDQrQGtcgbEhhpc4MF-P-lRw2Iv4ltoZW15aKPnLR0ueFErfcJGDvip7Oz8hMWecsxmAcGelEpgLsjb5_0P0ldkisGzTV4vAvm4"/>
+</div>
+<div class="flex-1 p-6 flex justify-between items-center">
+<div class="space-y-2">
+<div>
+<h3 class="text-xl font-bold text-on-surface group-hover:text-primary transition-colors">서울 아산 힐링 내과</h3>
+<p class="text-on-surface-variant text-sm mt-0.5">내과, 가정의학과, 검진센터</p>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-amber-400 text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-on-surface text-sm">4.9</span>
+<span class="text-on-surface-variant text-xs">(1,240)</span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant text-xs">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<span>800m</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-end gap-4">
+<span class="bg-green-50 text-green-700 px-3 py-1 rounded-lg text-[10px] font-bold border border-green-100 uppercase tracking-tighter">Open Now</span>
+<button class="p-2 rounded-full bg-surface-container-low text-primary hover:bg-primary hover:text-white transition-all">
+<span class="material-symbols-outlined text-xl">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Hospital Card 2 -->
+<div class="bg-white rounded-2xl overflow-hidden flex shadow-sm hover:shadow-md transition-shadow group cursor-pointer border border-transparent hover:border-primary/10 h-40">
+<div class="w-64 overflow-hidden">
+<img alt="waiting room" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAusQoeqNnpxDqEUJ8v2qcEgAJsNpFtjTCsMjyhNR5hp8nl7oEhbJyZ_-ozNKzUXjF-Pd7NIQm5a7Cd2etj455AQ0Eq127jB5VCwVdXnz7lEWCjKeEscYZUct83opgujr1vm7JR5UFsnI0WLurcA6_g6P4tjvg_gopAEQ4GrxBC6e9bcpXzvgoUL5tF4bzbeALWwzLmUaSmOyVXE4sqOC2kX--HzCxGLG9JytazZoRPKaQn0sffFyPpBKHlQ4iKlAI4vrLZlUWOLyA"/>
+</div>
+<div class="flex-1 p-6 flex justify-between items-center">
+<div class="space-y-2">
+<div>
+<h3 class="text-xl font-bold text-on-surface group-hover:text-primary transition-colors">연세 바른 재활의학과</h3>
+<p class="text-on-surface-variant text-sm mt-0.5">재활의학과, 정형외과, 도수치료</p>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-amber-400 text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-on-surface text-sm">4.8</span>
+<span class="text-on-surface-variant text-xs">(856)</span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant text-xs">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<span>1.2km</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-end gap-4">
+<span class="bg-green-50 text-green-700 px-3 py-1 rounded-lg text-[10px] font-bold border border-green-100 uppercase tracking-tighter">Open Now</span>
+<button class="p-2 rounded-full bg-surface-container-low text-primary hover:bg-primary hover:text-white transition-all">
+<span class="material-symbols-outlined text-xl">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Hospital Card 3 -->
+<div class="bg-white rounded-2xl overflow-hidden flex shadow-sm hover:shadow-md transition-shadow group cursor-pointer border border-transparent hover:border-primary/10 h-40">
+<div class="w-64 overflow-hidden">
+<img alt="hospital corridor" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHXG2Y7K0JpLp5S5YjVpS1W-0W7jN_Y6L7Qv8f3U1j2l9rM4k5o6p7q8r9s0t1u2v3w4x5y6z7"/>
+</div>
+<div class="flex-1 p-6 flex justify-between items-center">
+<div class="space-y-2">
+<div>
+<h3 class="text-xl font-bold text-on-surface group-hover:text-primary transition-colors">이든 소아청소년과</h3>
+<p class="text-on-surface-variant text-sm mt-0.5">소아과, 예방접종, 영유아검진</p>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-amber-400 text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-on-surface text-sm">4.9</span>
+<span class="text-on-surface-variant text-xs">(542)</span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant text-xs">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<span>2.1km</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-end gap-4">
+<span class="bg-green-50 text-green-700 px-3 py-1 rounded-lg text-[10px] font-bold border border-green-100 uppercase tracking-tighter">Open Now</span>
+<button class="p-2 rounded-full bg-surface-container-low text-primary hover:bg-primary hover:text-white transition-all">
+<span class="material-symbols-outlined text-xl">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Hospital Card 4 -->
+<div class="bg-white rounded-2xl overflow-hidden flex shadow-sm hover:shadow-md transition-shadow group cursor-pointer border border-transparent hover:border-primary/10 h-40">
+<div class="w-64 overflow-hidden">
+<img alt="modern clinic" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-E_7Y9J0K1L2M3N4O5P6Q7R8S9T0U1V2W3X4Y5Z6A7B8C9D0E1F2G3H4I5J6K7L8"/>
+</div>
+<div class="flex-1 p-6 flex justify-between items-center">
+<div class="space-y-2">
+<div>
+<h3 class="text-xl font-bold text-on-surface group-hover:text-primary transition-colors">서울 밝은 안과</h3>
+<p class="text-on-surface-variant text-sm mt-0.5">안과, 시력교정, 백내장</p>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-amber-400 text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-on-surface text-sm">4.7</span>
+<span class="text-on-surface-variant text-xs">(912)</span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant text-xs">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<span>1.5km</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-end gap-4">
+<span class="bg-green-50 text-green-700 px-3 py-1 rounded-lg text-[10px] font-bold border border-green-100 uppercase tracking-tighter">Open Now</span>
+<button class="p-2 rounded-full bg-surface-container-low text-primary hover:bg-primary hover:text-white transition-all">
+<span class="material-symbols-outlined text-xl">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-12 flex justify-center">
+<button class="bg-primary text-white px-12 py-5 rounded-2xl font-bold text-lg hover:bg-primary-container transition-all shadow-lg hover:shadow-primary/20">
+                        추천 병원 더보기
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-slate-200/50 bg-slate-50 py-12 px-12">
+<div class="container mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
+<div class="space-y-6 max-w-sm">
+<div class="flex items-center gap-2 text-slate-900">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">home_health</span>
+<span class="font-['Manrope'] font-bold text-xl">방문닥터</span>
+</div>
+<p class="text-sm text-slate-500 font-body leading-relaxed">
+                    임상적 전문성과 따뜻한 돌봄으로 새로운 의료 경험을 제공합니다. 집에서 편안하게 최고의 의료 서비스를 만나보세요.
+                </p>
+<div class="space-y-1 text-xs text-slate-500 font-medium">
+<p>블루프라임</p>
+<p>대표 : 김덕규</p>
+<p>사업자등록번호 : 153-87-03544</p>
+<p>연락처 : goodduck2@naver.com</p>
+</div>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-slate-400 hover:text-primary transition-colors border border-slate-200" href="#">
+<span class="material-symbols-outlined text-xl">share</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-slate-400 hover:text-primary transition-colors border border-slate-200" href="#">
+<span class="material-symbols-outlined text-xl">chat</span>
+</a>
+</div>
+</div>
+<div class="grid grid-cols-2 lg:grid-cols-3 gap-16">
+<div class="space-y-4">
+<h4 class="font-bold text-slate-900 uppercase tracking-wider text-xs">Services</h4>
+<nav class="flex flex-col gap-3">
+<a class="text-sm text-slate-500 hover:text-blue-600 transition-all" href="#">방문진료</a>
+<a class="text-sm text-slate-500 hover:text-blue-600 transition-all" href="#">방문재활</a>
+</nav>
+</div>
+<div class="space-y-4">
+<h4 class="font-bold text-slate-900 uppercase tracking-wider text-xs">Support</h4>
+<nav class="flex flex-col gap-3">
+<a class="text-sm text-slate-500 hover:text-blue-600 transition-all" href="#">자주묻는 질문</a>
+</nav>
+</div>
+<div class="space-y-4 col-span-2 lg:col-span-1">
+<h4 class="font-bold text-slate-900 uppercase tracking-wider text-xs">Policy</h4>
+<nav class="flex flex-col gap-3">
+<a class="text-sm text-slate-500 hover:text-blue-600 transition-all" href="#">이용약관</a>
+</nav>
+</div>
+</div>
+</div>
+<div class="container mx-auto mt-16 pt-8 border-t border-slate-200/30 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-sm font-['Public_Sans'] text-slate-500">© Clinical Sanctuary. All rights reserved.</p>
+</div>
+</footer>
+</body></html>
