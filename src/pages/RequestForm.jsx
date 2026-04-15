@@ -23,7 +23,7 @@ const RequestForm = () => {
 
     try {
       const { data, error } = await supabase
-        .from('requests')
+        .from('applications')
         .insert([
           {
             user_id: user.id,

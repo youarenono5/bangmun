@@ -11,7 +11,7 @@ const AdminDashboard = () => {
     // Subscribe to all changes in requests table for admin
     const subscription = supabase
       .channel('admin-dashboard')
-      .on('postgres_changes', { event: '*', schema: 'public', table: 'requests' }, () => {
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'applications' }, () => {
         fetchRequests();
       })
       .subscribe();
@@ -23,7 +23,7 @@ const AdminDashboard = () => {
 
   const fetchRequests = async () => {
     const { data, error } = await supabase
-      .from('requests')
+      .from('applications')
       .select('*')
       .order('created_at', { ascending: false });
 
@@ -33,7 +33,7 @@ const AdminDashboard = () => {
 
   const updateStatus = async (id, status) => {
     const { error } = await supabase
-      .from('requests')
+      .from('applications')
       .update({ status })
       .eq('id', id);
 

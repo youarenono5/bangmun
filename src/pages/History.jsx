@@ -15,7 +15,7 @@ const History = () => {
     // Fetch initial requests
     const fetchRequests = async () => {
       const { data, error } = await supabase
-        .from('requests')
+        .from('applications')
         .select('*')
         .eq('user_id', user.id)
         .order('created_at', { ascending: false });
@@ -32,7 +32,7 @@ const History = () => {
       .on('postgres_changes', { 
         event: 'UPDATE', 
         schema: 'public', 
-        table: 'requests',
+        table: 'applications',
         filter: `user_id=eq.${user.id}`
       }, (payload) => {
         console.log('Change received!', payload);

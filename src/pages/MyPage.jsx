@@ -57,7 +57,7 @@ const MyPage = () => {
 
     if (profileData?.role === 'medical') {
       const { data: reqs } = await supabase
-        .from('requests')
+        .from('applications')
         .select('*')
         .eq('provider_id', user.id)
         .order('created_at', { ascending: false });
@@ -70,7 +70,7 @@ const MyPage = () => {
       setDoctorRegs(regs || []);
     } else {
       const { data: reqs } = await supabase
-        .from('requests')
+        .from('applications')
         .select('*')
         .eq('user_id', user.id)
         .order('created_at', { ascending: false });
@@ -141,7 +141,7 @@ const MyPage = () => {
 
   const handleUpdateStatus = async (id, status) => {
     const { error } = await supabase
-      .from('requests')
+      .from('applications')
       .update({ status })
       .eq('id', id);
     if (!error) {
