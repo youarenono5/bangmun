@@ -21,7 +21,7 @@ export const DEPARTMENTS = [
   { name: '정형외과', emoji: '🦴', bgColor: 'bg-slate-100' },
   { name: '소아청소년', emoji: '👶', bgColor: 'bg-pink-50' },
   { name: '이비인후', emoji: '👂', bgColor: 'bg-purple-50' },
-  { name: '피구과', emoji: '✨', bgColor: 'bg-yellow-50' },
+  { name: '피부과', emoji: '✨', bgColor: 'bg-yellow-50' },
   { name: '정신의학', emoji: '🧠', bgColor: 'bg-teal-50' },
   { name: '산부인과', emoji: '🤰', bgColor: 'bg-rose-50' },
   { name: '한방과', emoji: '🌿', bgColor: 'bg-emerald-50' },
