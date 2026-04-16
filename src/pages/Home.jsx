@@ -189,7 +189,7 @@ const Home = () => {
   return (
     <div className="bg-surface min-h-screen">
       {/* Desktop Header */}
-      <nav className="hidden md:flex fixed top-0 w-full z-50 glass-nav shadow-[0_4px_20px_rgba(0,0,0,0.04)] h-20 justify-center items-center px-6 max-w-full">
+      <nav className="hidden md:flex fixed top-0 w-full z-50 glass-nav shadow-[0_4px_20px_rgba(0,0,0,0.04)] h-[70px] justify-center items-center px-6 max-w-full">
         <div className="flex justify-between items-center w-full max-w-[1280px]">
           <div className="flex items-center gap-8">
             <div className="flex items-center gap-2 text-primary cursor-pointer" onClick={() => navigate('/')}>
@@ -226,7 +226,7 @@ const Home = () => {
 
       {/* Mobile Header */}
       <header className="md:hidden fixed top-0 w-full z-50 bg-slate-50/80 backdrop-blur-md shadow-sm border-b border-slate-100">
-        <div className="flex items-center justify-between px-6 py-4 w-full max-w-md mx-auto">
+        <div className="flex items-center justify-between px-6 pt-[13px] pb-[11px] w-full max-w-md mx-auto">
           <h1 className="text-primary font-headline font-extrabold tracking-tight text-lg">
             <div className="flex items-center gap-1.5">
               <span className="material-symbols-outlined text-primary text-2xl" style={{ fontVariationSettings: "'FILL' 1" }}>home_health</span>
@@ -253,7 +253,7 @@ const Home = () => {
         </div>
       </header>
 
-      <main className="pt-20 md:pt-20">
+      <main className="pt-16 md:pt-20">
         {/* Desktop Hero Section */}
         <section 
           className="hidden md:block relative h-[360px] w-full overflow-hidden"
@@ -305,7 +305,7 @@ const Home = () => {
           
           {/* Mobile Banner (Hero Section) */}
           <div className="md:hidden">
-            <div className="relative w-full h-[102px] rounded-xl md:rounded-2xl overflow-hidden shadow-md">
+            <div className="relative w-full h-[102px] rounded-lg md:rounded-2xl overflow-hidden shadow-md">
               <div 
                 className="flex h-full"
                 style={{ 
@@ -338,13 +338,13 @@ const Home = () => {
 
           {/* Service & Department Integrated Selector (Unified PC/Mobile Design) */}
           <section className="md:-mt-24 relative z-20">
-            <div className="bg-white p-4 md:p-10 rounded-2xl md:rounded-3xl shadow-xl shadow-primary/5 border border-primary/5 space-y-4 md:space-y-12">
+            <div className="bg-white p-4 md:p-10 rounded-xl md:rounded-xl shadow-xl shadow-primary/5 border border-primary/5 space-y-4 md:space-y-12">
               
               {/* Service Tabs */}
               <div className="flex flex-row gap-3 md:gap-8 max-w-full">
                 <button 
                   onClick={() => { setActiveTab('doctor'); setSearchTerm(''); }}
-                  className={`relative flex-1 h-16 md:h-auto px-5 md:p-8 rounded-xl md:rounded-[2rem] transition-all duration-500 flex flex-row items-center justify-center md:justify-between group cursor-pointer overflow-hidden ${
+                  className={`relative flex-1 h-16 md:h-auto px-5 md:p-8 rounded-lg md:rounded-lg transition-all duration-500 flex flex-row items-center justify-center md:justify-between group cursor-pointer overflow-hidden ${
                     activeTab === 'doctor' 
                     ? 'bg-gradient-to-br from-primary to-blue-700 text-white shadow-2xl shadow-primary/30 scale-[1.02] -translate-y-1' 
                     : 'bg-slate-100 border-[1.5px] border-slate-200 text-slate-400 grayscale opacity-80 hover:opacity-100 hover:shadow-lg'
@@ -379,7 +379,7 @@ const Home = () => {
 
                 <button 
                   onClick={() => { setActiveTab('rehab'); setSearchTerm(''); }}
-                  className={`relative flex-1 h-16 md:h-auto px-5 md:p-8 rounded-xl md:rounded-[2rem] transition-all duration-500 flex flex-row items-center justify-center md:justify-between group cursor-pointer overflow-hidden ${
+                  className={`relative flex-1 h-16 md:h-auto px-5 md:p-8 rounded-lg md:rounded-lg transition-all duration-500 flex flex-row items-center justify-center md:justify-between group cursor-pointer overflow-hidden ${
                     activeTab === 'rehab' 
                     ? 'bg-gradient-to-br from-teal-600 to-emerald-800 text-white shadow-2xl shadow-teal-900/20 scale-[1.02] -translate-y-1' 
                     : 'bg-slate-100 border-[1.5px] border-slate-200 text-slate-400 grayscale opacity-80 hover:opacity-100 hover:shadow-lg'
@@ -440,7 +440,7 @@ const Home = () => {
                     </div>
                     
                     {/* Integrated Search Bar inside Visiting Doctor Tab */}
-                    <div className="mt-6 flex items-center bg-surface-container-lowest border-2 border-primary/10 px-5 py-4 rounded-2xl shadow-sm gap-4 focus-within:ring-4 ring-primary/5 transition-all group focus-within:border-primary/30">
+                    <div className="mt-6 flex items-center bg-surface-container-lowest border-2 border-primary/10 px-5 py-2.5 rounded-lg shadow-sm gap-4 focus-within:ring-4 ring-primary/5 transition-all group focus-within:border-primary/30">
                       <span className="material-symbols-outlined text-primary font-black group-focus-within:scale-110 transition-transform">search</span>
                       <input 
                         className="bg-transparent border-none focus:ring-0 text-sm w-full font-medium text-on-surface placeholder:text-on-surface-variant/40" 
@@ -461,7 +461,7 @@ const Home = () => {
                           setActiveSido(e.target.value);
                           setActiveSigungu('전체');
                         }}
-                        className="w-full bg-surface-container-low border-2 border-primary/10 rounded-2xl px-5 py-4 text-base font-bold text-on-surface appearance-none focus:ring-4 ring-primary/5 focus:border-primary transition-all cursor-pointer"
+                        className="w-full bg-surface-container-low border-2 border-primary/10 rounded-lg px-5 py-4 text-base font-semibold text-on-surface appearance-none focus:ring-4 ring-primary/5 focus:border-primary transition-all cursor-pointer"
                       >
                         <option value="전체">전국 전체</option>
                         {REGION_DATA.map(region => (
@@ -477,7 +477,7 @@ const Home = () => {
                         value={activeSigungu}
                         onChange={(e) => setActiveSigungu(e.target.value)}
                         disabled={activeSido === '전체'}
-                        className={`w-full bg-surface-container-low border-2 border-primary/10 rounded-2xl px-5 py-4 text-base font-bold text-on-surface appearance-none focus:ring-4 ring-primary/5 focus:border-primary transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed`}
+                        className={`w-full bg-surface-container-low border-2 border-primary/10 rounded-lg px-5 py-4 text-base font-semibold text-on-surface appearance-none focus:ring-4 ring-primary/5 focus:border-primary transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed`}
                       >
                         <option value="전체">시/군/구 전체</option>
                         {activeSido !== '전체' && 
@@ -493,7 +493,7 @@ const Home = () => {
                       <span className="material-symbols-outlined">chevron_right</span>
                     </div>
                     
-                    <button className="w-full md:w-auto bg-primary text-white font-bold px-8 py-4 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all">
+                    <button className="w-full md:w-auto bg-primary text-white font-semibold px-8 py-3 rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all">
                       지역별 검색
                     </button>
                   </div>
@@ -532,7 +532,7 @@ const Home = () => {
                   <div 
                     key={inst.id}
                     onClick={() => handleInstitutionClick(inst)}
-                    className="flex bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all group cursor-pointer border border-outline-variant/10 hover:border-primary/20 h-24 md:h-32"
+                    className="flex bg-white rounded-lg md:rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all group cursor-pointer border border-outline-variant/10 hover:border-primary/20 h-24 md:h-32"
                   >
                     <div className="w-24 md:w-40 overflow-hidden shrink-0">
                       <img src={inst.image} alt={inst.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
