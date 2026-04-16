@@ -78,9 +78,9 @@ const CategoryDetail = () => {
       <main className="pt-20 md:pt-28 container mx-auto max-w-[1280px] px-4 md:px-6">
         {/* Breadcrumb */}
         <div className="mb-4 md:mb-6">
-          <p className="text-[10px] md:text-xs text-slate-400 font-bold uppercase tracking-widest flex items-center gap-1">
+          <p className="text-xs md:text-sm text-slate-400 font-bold uppercase tracking-widest flex items-center gap-1">
             <span className="cursor-pointer hover:text-primary" onClick={() => navigate('/')}>방문진료</span>
-            <span className="material-symbols-outlined text-[12px]">chevron_right</span>
+            <span className="material-symbols-outlined text-[14px]">chevron_right</span>
             <span className="text-primary">{activeCategory}</span>
           </p>
         </div>
