@@ -529,7 +529,7 @@ const Home = () => {
                   <div 
                     key={inst.id}
                     onClick={() => handleInstitutionClick(inst)}
-                    className="flex bg-white rounded-lg md:rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all group cursor-pointer border border-outline-variant/10 hover:border-primary/20 h-20 md:h-[105px]"
+                    className="flex bg-white rounded-lg md:rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all group cursor-pointer border border-outline-variant/10 hover:border-primary/20 h-24 md:h-32"
                   >
                     <div className="w-24 md:w-40 overflow-hidden shrink-0">
                       <img src={inst.image} alt={inst.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -537,22 +537,22 @@ const Home = () => {
                     <div className="flex-1 p-2.5 md:p-4 flex flex-col justify-between">
                       <div className="space-y-0.5 md:space-y-1">
                         <div className="flex justify-between items-start">
-                          <h4 className="font-semibold text-sm md:text-lg text-on-surface group-hover:text-primary transition-colors truncate pr-2">{inst.name}</h4>
-                          <span className={`${inst.status === 'open' ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'} px-1.5 py-0.5 rounded text-[8px] md:text-[10px] font-black uppercase shrink-0`}>
+                          <h4 className="font-semibold text-base md:text-xl text-on-surface group-hover:text-primary transition-colors truncate pr-2">{inst.name}</h4>
+                          <span className={`${inst.status === 'open' ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'} px-2 py-1 rounded text-[10px] md:text-xs font-black uppercase shrink-0`}>
                             {inst.status === 'open' ? 'Open' : 'Closed'}
                           </span>
                         </div>
-                        <p className="text-[10px] md:text-xs text-on-surface-variant line-clamp-1">{inst.category}</p>
+                        <p className="text-xs md:text-sm text-on-surface-variant line-clamp-1">{inst.category}</p>
                       </div>
                       
                       <div className="flex items-center justify-between mt-auto">
                         <div className="flex items-center gap-3">
                           <div className="flex items-center gap-0 text-red-700">
-                             <span className="material-symbols-outlined text-[12px] scale-[0.6] origin-center inline-block -mr-1" style={{ fontVariationSettings: "'FILL' 1" }}>favorite</span>
-                             <span className="font-black text-[10px] md:text-xs">{inst.rating}</span>
-                             <span className="text-slate-400 text-[9px] md:text-[10px] font-medium ml-0.5">({inst.reviews.toLocaleString()})</span>
+                             <span className="material-symbols-outlined text-[14px] scale-[0.7] origin-center inline-block -mr-1" style={{ fontVariationSettings: "'FILL' 1" }}>favorite</span>
+                             <span className="font-black text-xs md:text-sm">{inst.rating}</span>
+                             <span className="text-slate-400 text-[10px] md:text-xs font-medium ml-0.5">({inst.reviews.toLocaleString()})</span>
                           </div>
-                          <span className="text-[10px] md:text-xs text-outline font-medium">📍 {inst.distance}</span>
+                          <span className="text-xs md:text-sm text-outline font-medium">📍 {inst.distance}</span>
                         </div>
                         <span className="material-symbols-outlined text-primary text-lg md:text-xl group-hover:translate-x-1 transition-transform">chevron_right</span>
                       </div>
