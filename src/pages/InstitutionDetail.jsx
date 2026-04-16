@@ -97,7 +97,7 @@ const InstitutionDetail = () => {
   }, [reviews, reviewSort]);
 
   return (
-    <div className="bg-white min-h-screen pb-24">
+    <div className="bg-white min-h-screen pb-44 md:pb-20">
       {/* Mobile Header */}
       <header className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-lg border-b border-slate-100 h-14 flex items-center px-4 md:hidden">
         <button onClick={() => navigate(-1)} className="material-symbols-outlined text-slate-800">arrow_back</button>
