@@ -69,6 +69,8 @@ const InstitutionDetail = () => {
       { label: '예약시간 준수', count: Math.floor(institution.reviews * 0.6) },
       { label: '자세한 설명', count: Math.floor(institution.reviews * 0.75) },
     ]
+  };
+
   const reviews = useMemo(() => [
     { id: 1, user: '건강지킴이', date: '2024.04.12', rating: 5, content: '거동이 불편하신 아버지를 위해 신청했는데 선생님께서 너무 친절하게 진료해 주셨어요. 상세하게 설명해 주셔서 안심이 되었습니다.', isBest: true },
     { id: 2, user: '토끼맘', date: '2024.04.10', rating: 5, content: '아이 방문진료는 처음이라 걱정 많았는데, 소아과 전문의 선생님이 오셔서 정말 꼼꼼하게 봐주셨어요. 처방받은 약 먹고 금방 나았습니다!', isBest: true },
