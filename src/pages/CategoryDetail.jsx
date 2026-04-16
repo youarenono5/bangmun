@@ -87,9 +87,9 @@ const CategoryDetail = () => {
 
         {/* Category Header & Slider */}
         <div className="mb-6 md:mb-8 space-y-4 md:space-y-6">
-          <div className="flex items-end gap-4 overflow-hidden">
-            <h2 className="text-xl md:text-3xl font-black text-slate-900 shrink-0">{activeCategory}</h2>
-            <div className="flex gap-3 overflow-x-auto no-scrollbar pb-1 items-center">
+          <div className="flex items-center gap-4 overflow-hidden">
+            <h2 className="text-xl md:text-3xl font-black text-slate-900 shrink-0 leading-none">{activeCategory}</h2>
+            <div className="flex gap-2.5 md:gap-3 overflow-x-auto no-scrollbar items-center py-1">
               {DEPARTMENTS.map(dept => (
                 <button 
                   key={dept.name} 
