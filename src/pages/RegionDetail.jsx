@@ -17,21 +17,24 @@ const RegionDetail = () => {
   const [isSortDropdownOpen, setIsSortDropdownOpen] = useState(false);
 
   const currentSidoData = useMemo(() => {
-    return REGION_DATA.find(r => r.name === activeSido) || REGION_DATA[0];
+    return REGION_DATA.find(r => r.name === activeSido) || null;
   }, [activeSido]);
 
   const filteredInstitutions = useMemo(() => {
     let list = [...MOCK_INSTITUTIONS.rehab];
     
     // 1. Region Filtering
-    list = list.filter(inst => inst.region === activeSido);
+    if (activeSido !== '전체') {
+      list = list.filter(inst => inst.region === activeSido);
+    }
+    
     if (activeSigungu !== '전체') {
       list = list.filter(inst => inst.sigungu === activeSigungu);
     }
 
-    // 2. Additional Filter (회복기 재활병원, 주치의제도병원, 진료받은병원, 저장한병원)
+    // 2. Additional Filter (회복기 재활병원, 진료받은병원, 저장한병원)
     if (activeFilter === '회복기 재활병원') {
-      list = list.slice(0, Math.ceil(list.length * 0.8)); // Mock
+      list = list.filter(inst => inst.name.includes('병원') || inst.category.includes('재활의학')); // Mock logic
     } else if (activeFilter === '진료받은병원' || activeFilter === '저장한병원') {
       list = []; // Mock
     }
@@ -99,7 +102,9 @@ const RegionDetail = () => {
         {/* Region Header & Slider */}
         <div className="mb-6 md:mb-8 space-y-4 md:space-y-6">
           <div className="flex items-center gap-4 overflow-hidden">
-            <h2 className="text-xl md:text-3xl font-black text-slate-900 shrink-0 leading-none">{activeSigungu === '전체' ? `${activeSido} 전체` : activeSigungu}</h2>
+            <h2 className="text-xl md:text-3xl font-black text-slate-900 shrink-0 leading-none">
+              {activeSido === '전체' ? '전국 전체' : (activeSigungu === '전체' ? `${activeSido} 전체` : activeSigungu)}
+            </h2>
             <div className="flex gap-2.5 md:gap-3 overflow-x-auto no-scrollbar items-center py-1">
               <button 
                 onClick={() => {
@@ -110,7 +115,7 @@ const RegionDetail = () => {
               >
                 전체
               </button>
-              {currentSidoData.sub.map(sub => (
+              {currentSidoData && currentSidoData.sub.map(sub => (
                 <button 
                   key={sub} 
                   onClick={() => {
