@@ -51,11 +51,11 @@ const InstitutionDetail = () => {
     ],
     intro: `${institution.name}은 20년 이상의 풍부한 임상 경험을 바탕으로, 거동이 불편하신 환자분들을 위해 직접 찾아가는 고품질 의료 서비스를 제공합니다. 환자 한 분 한 분을 내 가족처럼 정성껏 모시는 것이 저희의 진료 철학입니다.`,
     hours: [
-      { day: '월요일', time: '09:30 ~ 17:30', lunch: '12:00 ~ 13:00' },
-      { day: '화요일', time: '09:30 ~ 17:30', lunch: '12:00 ~ 13:00' },
-      { day: '수요일', time: '09:30 ~ 17:30', lunch: '12:00 ~ 13:00' },
-      { day: '목요일', time: '09:30 ~ 17:30', lunch: '12:00 ~ 13:00' },
-      { day: '금요일', time: '09:30 ~ 17:30', lunch: '12:00 ~ 13:00' },
+      { day: '월요일', time: '09:30 ~ 17:30', lunch: '점심 12:00 ~ 13:00' },
+      { day: '화요일', time: '09:30 ~ 17:30', lunch: '점심 12:00 ~ 13:00' },
+      { day: '수요일', time: '09:30 ~ 17:30', lunch: '점심 12:00 ~ 13:00' },
+      { day: '목요일', time: '09:30 ~ 17:30', lunch: '점심 12:00 ~ 13:00' },
+      { day: '금요일', time: '09:30 ~ 17:30', lunch: '점심 12:00 ~ 13:00' },
       { day: '토요일', time: '09:30 ~ 13:00', lunch: '점심시간 없음' },
     ],
     address: '서울시 광진구 구의동 80-25번지 000 병원',
@@ -103,7 +103,7 @@ const InstitutionDetail = () => {
         <div className="p-5 md:p-8 space-y-4">
           <div className="flex items-center gap-2 flex-wrap">
             {institution.category.split(',').slice(0, 3).map((cat, idx) => (
-              <span key={idx} className="bg-primary/5 text-primary border border-primary/20 px-2 py-0.5 rounded text-[10px] md:text-xs font-black">
+              <span key={idx} className="bg-primary/5 text-primary border border-primary/20 px-2 py-0.5 rounded text-[10px] md:text-xs font-medium">
                 {cat.trim()} 전문의
               </span>
             ))}
@@ -112,7 +112,7 @@ const InstitutionDetail = () => {
           <div className="space-y-1">
             <h1 className="text-2xl md:text-3xl font-black text-slate-900 leading-tight">{institution.name}</h1>
             <div className="flex items-center gap-3">
-              <span className="bg-green-50 text-green-600 px-2 py-1 rounded text-[10px] md:text-xs font-black uppercase">예약가능</span>
+              <span className="bg-green-50 text-green-600 px-2 py-1 rounded text-[10px] md:text-xs font-medium uppercase">예약가능</span>
               <div className="flex items-center gap-1 text-red-600 font-bold">
                 <span className="material-symbols-outlined text-xs" style={{ fontVariationSettings: "'FILL' 1" }}>favorite</span>
                 <span className="text-sm">{institution.rating}</span>
@@ -126,13 +126,13 @@ const InstitutionDetail = () => {
         <div className="sticky top-14 md:top-[70px] bg-white border-b border-slate-100 z-40 flex">
           <button 
             onClick={() => setActiveTab('info')}
-            className={`flex-1 py-4 text-sm md:text-base font-black transition-all border-b-2 ${activeTab === 'info' ? 'border-primary text-primary' : 'border-transparent text-slate-400'}`}
+            className={`flex-1 py-4 text-sm md:text-base font-bold transition-all border-b-2 ${activeTab === 'info' ? 'border-primary text-primary' : 'border-transparent text-slate-400'}`}
           >
             병원 및 의사 정보
           </button>
           <button 
             onClick={() => setActiveTab('reviews')}
-            className={`flex-1 py-4 text-sm md:text-base font-black transition-all border-b-2 ${activeTab === 'reviews' ? 'border-primary text-primary' : 'border-transparent text-slate-400'}`}
+            className={`flex-1 py-4 text-sm md:text-base font-bold transition-all border-b-2 ${activeTab === 'reviews' ? 'border-primary text-primary' : 'border-transparent text-slate-400'}`}
           >
             리뷰
           </button>
@@ -144,7 +144,7 @@ const InstitutionDetail = () => {
             <div className="space-y-10">
               {/* Doctor Profile */}
               <section className="space-y-4">
-                <h3 className="text-lg font-black text-slate-900 flex items-center gap-2">
+                <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2">
                   <span className="material-symbols-outlined text-primary">clinical_notes</span>
                   진료과목
                 </h3>
@@ -152,7 +152,7 @@ const InstitutionDetail = () => {
               </section>
 
               <section className="space-y-4">
-                <h3 className="text-lg font-black text-slate-900 flex items-center gap-2">
+                <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2">
                   <span className="material-symbols-outlined text-primary">school</span>
                   의료진 약력
                 </h3>
@@ -167,7 +167,7 @@ const InstitutionDetail = () => {
               </section>
 
               <section className="space-y-4">
-                <h3 className="text-lg font-black text-slate-900 flex items-center gap-2">
+                <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2">
                   <span className="material-symbols-outlined text-primary">person</span>
                   의사소개
                 </h3>
@@ -177,7 +177,7 @@ const InstitutionDetail = () => {
               </section>
 
               <section className="space-y-4 bg-slate-50 p-5 rounded-xl border border-slate-100">
-                <h3 className="text-lg font-black text-slate-900 flex items-center gap-2 mb-2">
+                <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2 mb-2">
                   <span className="material-symbols-outlined text-primary">schedule</span>
                   진료시간
                 </h3>
@@ -195,7 +195,7 @@ const InstitutionDetail = () => {
               </section>
 
               <section className="space-y-4">
-                <h3 className="text-lg font-black text-slate-900 flex items-center gap-2">
+                <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2">
                   <span className="material-symbols-outlined text-primary">location_on</span>
                   병원위치
                 </h3>
@@ -279,7 +279,7 @@ const InstitutionDetail = () => {
       </main>
 
       {/* Fixed Bottom Action Button */}
-      <div className="fixed bottom-0 w-full bg-white border-t border-slate-100 p-4 shadow-[0_-8px_30px_rgba(0,0,0,0.06)] z-50 flex justify-center">
+      <div className="fixed bottom-20 md:bottom-0 w-full bg-white/90 backdrop-blur-md border-t border-slate-100 p-4 shadow-[0_-8px_30px_rgba(0,0,0,0.06)] z-40 flex justify-center">
         <button 
           onClick={handleReservation}
           className="w-full max-w-[800px] h-14 md:h-16 bg-primary text-white text-lg md:text-xl font-black rounded-xl shadow-lg shadow-primary/25 hover:scale-[1.01] active:scale-[0.98] transition-all flex items-center justify-center gap-2"
