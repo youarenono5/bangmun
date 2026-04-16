@@ -26,8 +26,6 @@ const CategoryDetail = () => {
     // 2. Additional Filter (회복기 재활병원, 주치의제도병원, 진료받은병원, 저장한병원)
     if (activeFilter === '회복기 재활병원') {
       list = list.slice(0, Math.ceil(list.length * 0.7)); 
-    } else if (activeFilter === '주치의제도병원') {
-      list = list.slice(0, Math.ceil(list.length * 0.5));
     } else if (activeFilter === '진료받은병원' || activeFilter === '저장한병원') {
       list = []; 
     }
@@ -149,7 +147,7 @@ const CategoryDetail = () => {
 
             {/* Scrollable Filters */}
             <div className="flex gap-2 overflow-x-auto no-scrollbar py-1.5 px-1 -my-1.5 flex-1">
-              {['회복기 재활병원', '주치의제도병원', '진료받은병원', '저장한병원'].map(filter => (
+              {['회복기 재활병원', '진료받은병원', '저장한병원'].map(filter => (
                 <button 
                   key={filter} 
                   onClick={() => setActiveFilter(activeFilter === filter ? '전체' : filter)}
