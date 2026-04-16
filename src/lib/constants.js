@@ -10,7 +10,7 @@ export const REGION_DATA = [
   { name: '세종', sub: ['세종시'] },
   { name: '강원', sub: ['춘천시', '원주시', '강릉시', '동해시', '태백시', '속초시', '삼척시', '홍천군', '횡성군', '영월군', '평창군', '정선군', '철원군', '화천군', '양구군', '인제군', '고성군', '양양군'] },
   { name: '충북', sub: ['청주시', '충주시', '제천시', '보은군', '옥천군', '영동군', '증평군', '진천군', '괴산군', '음성군', '단양군'] },
-  { name: '충남', sub: ['천안시', '공주시', '보령시', '아산시', '서산시', '논산시', '계룡시', '당진시', '금산군', '부여군', '서천군', '청양군', '홍성군', '예산군', '태안군'] },
+  { name: '충남', sub: ['천안시', '공주시', '보령시', ' 아산시', '서산시', '논산시', '계룡시', '당진시', '금산군', '부여군', '서천군', '청양군', '홍성군', '예산군', '태안군'] },
   { name: '전북', sub: ['전주시', '군산시', '익산시', '정읍시', '남원시', '김제시', '완주군', '진안군', '무주군', '장수군', '임실군', '순창군', '고창군', '부안군'] },
   { name: '전남', sub: ['목포시', '여수시', '순천시', '나주시', '광양시', '담양군', '곡성군', '구례군', '고흥군', '보성군', '화순군', '장흥군', '강진군', '해남군', '영암군', '무안군', '함평군', '영광군', '장성군', '완도군', '진도군', '신안군'] },
   { name: '경북', sub: ['포항시', '경주시', '김천시', '안동시', '구미시', '영주시', '영천시', '상주시', '문경시', '경산시', '의성군', '청송군', '영양군', '영덕군', '청도군', '고령군', '성주군', '칠곡군', '예천군', '봉화군', '울진군', '울릉군'] },
@@ -66,6 +66,12 @@ export const MOCK_INSTITUTIONS = {
     { id: 8, name: '다움 방문재활센터', category: '방문재활, 인지재활, 운동치료', symptoms: '치매예방, 거동불편 케어, 일상동작 훈련, 연하장애', rating: 4.9, reviews: 112, distance: '2.4km', image: 'https://images.unsplash.com/photo-1576091160550-217359f41f48?auto=format&fit=crop&q=80&w=400', status: 'open', region: '부산', sigungu: '해운대구' },
     { id: 43, name: '스마트 시니어 재활', category: '노인재활, 방문운동', symptoms: '근감소증 예방, 파킨슨 재활, 균형훈련', rating: 5.0, reviews: 45, distance: '4.2km', image: 'https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&q=80&w=400', status: 'open', region: '서울', sigungu: '광진구' },
     { id: 44, name: '참사랑 방문치료센터', category: '물리치료, 방무재활', symptoms: '수술 후 재활, 통증관리, 근력회복', rating: 4.8, reviews: 267, distance: '1.8km', image: 'https://images.unsplash.com/photo-1597452485669-2c7bb5fef90d?auto=format&fit=crop&q=80&w=400', status: 'open', region: '경기', sigungu: '용인시' },
+    { id: 45, name: '드림 재활 서비스', category: '통증치료, 도수재활', symptoms: '만성통증, 좌골신경통, 라운드숄더', rating: 4.7, reviews: 132, distance: '3.0km', image: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=400', status: 'open', region: '인천', sigungu: '부평구' },
+    { id: 46, name: '에이블 방문운동', category: '운동치료, 자세교정', symptoms: '자세불균형, 근력저하, 운동부족', rating: 4.9, reviews: 74, distance: '2.1km', image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&q=80&w=400', status: 'open', region: '서울', sigungu: '송파구' },
+    { id: 47, name: '베스트 실버 재활', category: '노인재활, 방문케어', symptoms: '치매관리, 욕창예방, 신체활동 지원', rating: 5.0, reviews: 212, distance: '1.1km', image: 'https://images.unsplash.com/photo-1581056770617-bc73070445d4?auto=format&fit=crop&q=80&w=400', status: 'open', region: '서울', sigungu: '노원구' },
+    { id: 48, name: '서울 재활 메디컬', category: '재활의학, 정형지원', symptoms: '골절 후 재활, 마비 환자 운동', rating: 4.6, reviews: 430, distance: '2.7km', image: 'https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&q=80&w=400', status: 'open', region: '서울', sigungu: '강남구' },
+    { id: 49, name: '라이프 재활 센터', category: '일상회복, 근력강화', symptoms: '무릎 수술 후, 어깨 회전근개 재활', rating: 4.8, reviews: 92, distance: '0.9km', image: 'https://images.unsplash.com/photo-1631217816660-ad4e6ad34193?auto=format&fit=crop&q=80&w=400', status: 'open', region: '경기', sigungu: '고양시' },
+    { id: 50, name: '편안한 집 재활', category: '홈 케어 서비스', symptoms: '거동이 불편하신 분, 중증 환자 재활', rating: 4.7, reviews: 185, distance: '1.4km', image: 'https://images.unsplash.com/photo-1512678000570-35e9f47f202a?auto=format&fit=crop&q=80&w=400', status: 'closed', region: '서울', sigungu: '영등포구' },
   ]
 };
 
