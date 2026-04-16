@@ -304,14 +304,16 @@ const InstitutionDetail = () => {
       </main>
 
       {/* Fixed Bottom Action Button */}
-      <div className="fixed bottom-20 md:bottom-0 w-full bg-white/90 backdrop-blur-md border-t border-slate-100 p-4 shadow-[0_-8px_30px_rgba(0,0,0,0.06)] z-40 flex justify-center">
-        <button 
-          onClick={handleReservation}
-          className="w-full max-w-[800px] h-14 md:h-16 bg-primary text-white text-lg md:text-xl font-black rounded-xl shadow-lg shadow-primary/25 hover:scale-[1.01] active:scale-[0.98] transition-all flex items-center justify-center gap-2"
-        >
-          <span className="material-symbols-outlined text-2xl">event_available</span>
-          진료 예약하기
-        </button>
+      <div className="fixed bottom-0 w-full bg-white border-t border-slate-100 z-40 flex justify-center pb-[74px] md:pb-0">
+        <div className="w-full px-4 py-3 md:py-4 flex justify-center bg-white/95 backdrop-blur-sm">
+          <button 
+            onClick={handleReservation}
+            className="w-full max-w-[800px] h-13 md:h-16 bg-primary text-white text-base md:text-lg font-bold rounded-xl shadow-lg shadow-primary/25 hover:scale-[1.01] active:scale-[0.98] transition-all flex items-center justify-center gap-2"
+          >
+            <span className="material-symbols-outlined text-xl md:text-2xl">event_available</span>
+            진료 예약하기
+          </button>
+        </div>
       </div>
 
       {/* Bottom Nav Sync */}
