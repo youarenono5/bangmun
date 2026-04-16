@@ -151,7 +151,7 @@ const CategoryDetail = () => {
             </div>
 
             {/* Scrollable Filters */}
-            <div className="flex gap-2 overflow-x-auto no-scrollbar pb-1 flex-1">
+            <div className="flex gap-2 overflow-x-auto no-scrollbar py-1.5 px-1 -my-1.5 flex-1">
               {['전문의', '진료받은 병원', '저장한 병원'].map(filter => (
                 <button 
                   key={filter} 
