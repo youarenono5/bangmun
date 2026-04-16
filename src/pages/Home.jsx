@@ -394,13 +394,13 @@ const Home = () => {
                       {DEPARTMENTS.map((dept) => (
                         <button
                           key={dept.name}
-                          onClick={() => setActiveFilter(dept.name)}
-                          className={`flex flex-col items-center justify-center p-1 md:p-2 rounded-2xl transition-all group ${activeFilter === dept.name ? 'scale-105 z-10' : 'opacity-80 hover:opacity-100'}`}
+                          onClick={() => navigate(`/category/${dept.name}`)}
+                          className={`flex flex-col items-center justify-center p-1 md:p-2 rounded-lg transition-all group opacity-80 hover:opacity-100`}
                         >
-                          <div className={`w-10 h-10 md:w-16 md:h-16 rounded-2xl ${dept.bgColor} flex items-center justify-center mb-2 shadow-sm transition-all group-hover:scale-110 group-hover:shadow-md ${activeFilter === dept.name ? 'ring-2 ring-primary ring-offset-2' : ''}`}>
+                          <div className={`w-10 h-10 md:w-16 md:h-16 rounded-lg ${dept.bgColor} flex items-center justify-center mb-2 shadow-sm transition-all group-hover:scale-110 group-hover:shadow-md`}>
                             <span className="text-xl md:text-3xl filter drop-shadow-sm">{dept.emoji}</span>
                           </div>
-                          <span className={`text-[10px] md:text-xs font-medium truncate w-full text-center leading-tight transition-colors ${activeFilter === dept.name ? 'text-primary font-bold' : 'text-on-surface-variant'}`}>{dept.name}</span>
+                          <span className={`text-[10px] md:text-xs font-medium truncate w-full text-center leading-tight transition-colors text-on-surface-variant`}>{dept.name}</span>
                         </button>
                       ))}
                     </div>
