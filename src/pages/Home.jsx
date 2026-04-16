@@ -194,13 +194,13 @@ const Home = () => {
           <div className="flex items-center gap-8">
             <div className="flex items-center gap-2 text-primary cursor-pointer" onClick={() => navigate('/')}>
               <span className="material-symbols-outlined text-3xl" style={{ fontVariationSettings: "'FILL' 1" }}>home_health</span>
-              <span className="text-2xl font-black tracking-tight">방문닥터</span>
+              <span className="text-2xl font-headline font-black tracking-tight">방문닥터</span>
             </div>
           </div>
           <div className="flex items-center gap-8">
             <div className="flex items-center gap-4">
               {user ? (
-                <span className="text-sm font-bold text-on-surface-variant">{user.email.split('@')[0]}님</span>
+                <span className="text-sm font-bold text-on-surface-variant">{user?.email?.split('@')[0]}님</span>
               ) : (
                 <>
                   <Link className="text-slate-600 font-bold hover:text-primary transition-colors text-sm" to="/login">로그인</Link>
@@ -227,7 +227,7 @@ const Home = () => {
       {/* Mobile Header */}
       <header className="md:hidden fixed top-0 w-full z-50 bg-slate-50/80 backdrop-blur-md shadow-sm border-b border-slate-100">
         <div className="flex items-center justify-between px-6 pt-[13px] pb-[11px] w-full max-w-md mx-auto">
-          <h1 className="text-primary font-headline font-extrabold tracking-tight text-lg">
+          <h1 className="text-primary font-headline font-extrabold tracking-tight text-lg cursor-pointer" onClick={() => navigate('/')}>
             <div className="flex items-center gap-1.5">
               <span className="material-symbols-outlined text-primary text-2xl" style={{ fontVariationSettings: "'FILL' 1" }}>home_health</span>
               <span>방문닥터</span>
@@ -236,9 +236,6 @@ const Home = () => {
           <div className="flex items-center gap-0.5">
             <button className="p-2 text-primary hover:bg-primary/5 rounded-full transition-colors">
               <span className="material-symbols-outlined text-[22px]">search</span>
-            </button>
-            <button className="p-2 text-primary hover:bg-primary/5 rounded-full transition-colors">
-              <span className="material-symbols-outlined text-[22px]">favorite</span>
             </button>
             <button className="p-2 text-primary hover:bg-primary/5 rounded-full transition-colors relative">
               <span className="material-symbols-outlined text-[22px]">notifications</span>
@@ -461,7 +458,7 @@ const Home = () => {
                           setActiveSido(e.target.value);
                           setActiveSigungu('전체');
                         }}
-                        className="w-full bg-surface-container-low border-2 border-primary/10 rounded-lg px-5 py-4 text-base font-semibold text-on-surface appearance-none focus:ring-4 ring-primary/5 focus:border-primary transition-all cursor-pointer"
+                        className="w-full bg-surface-container-low border-2 border-primary/10 rounded-lg px-5 py-4 text-base font-medium text-on-surface appearance-none focus:ring-4 ring-primary/5 focus:border-primary transition-all cursor-pointer"
                       >
                         <option value="전체">전국 전체</option>
                         {REGION_DATA.map(region => (
@@ -477,7 +474,7 @@ const Home = () => {
                         value={activeSigungu}
                         onChange={(e) => setActiveSigungu(e.target.value)}
                         disabled={activeSido === '전체'}
-                        className={`w-full bg-surface-container-low border-2 border-primary/10 rounded-lg px-5 py-4 text-base font-semibold text-on-surface appearance-none focus:ring-4 ring-primary/5 focus:border-primary transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed`}
+                        className={`w-full bg-surface-container-low border-2 border-primary/10 rounded-lg px-5 py-4 text-base font-medium text-on-surface appearance-none focus:ring-4 ring-primary/5 focus:border-primary transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed`}
                       >
                         <option value="전체">시/군/구 전체</option>
                         {activeSido !== '전체' && 
@@ -532,7 +529,7 @@ const Home = () => {
                   <div 
                     key={inst.id}
                     onClick={() => handleInstitutionClick(inst)}
-                    className="flex bg-white rounded-lg md:rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all group cursor-pointer border border-outline-variant/10 hover:border-primary/20 h-24 md:h-32"
+                    className="flex bg-white rounded-lg md:rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all group cursor-pointer border border-outline-variant/10 hover:border-primary/20 h-20 md:h-[105px]"
                   >
                     <div className="w-24 md:w-40 overflow-hidden shrink-0">
                       <img src={inst.image} alt={inst.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -540,7 +537,7 @@ const Home = () => {
                     <div className="flex-1 p-2.5 md:p-4 flex flex-col justify-between">
                       <div className="space-y-0.5 md:space-y-1">
                         <div className="flex justify-between items-start">
-                          <h4 className="font-bold text-sm md:text-lg text-on-surface group-hover:text-primary transition-colors truncate pr-2">{inst.name}</h4>
+                          <h4 className="font-semibold text-sm md:text-lg text-on-surface group-hover:text-primary transition-colors truncate pr-2">{inst.name}</h4>
                           <span className={`${inst.status === 'open' ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'} px-1.5 py-0.5 rounded text-[8px] md:text-[10px] font-black uppercase shrink-0`}>
                             {inst.status === 'open' ? 'Open' : 'Closed'}
                           </span>
@@ -550,11 +547,12 @@ const Home = () => {
                       
                       <div className="flex items-center justify-between mt-auto">
                         <div className="flex items-center gap-3">
-                          <div className="flex items-center gap-1 text-orange-500">
-                             <span className="material-symbols-outlined text-[14px] md:text-base" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+                          <div className="flex items-center gap-0 text-red-700">
+                             <span className="material-symbols-outlined text-[12px] scale-[0.6] origin-center inline-block -mr-1" style={{ fontVariationSettings: "'FILL' 1" }}>favorite</span>
                              <span className="font-black text-[10px] md:text-xs">{inst.rating}</span>
+                             <span className="text-slate-400 text-[9px] md:text-[10px] font-medium ml-0.5">({inst.reviews.toLocaleString()})</span>
                           </div>
-                          <span className="text-[10px] md:text-xs text-outline font-medium">{inst.distance}</span>
+                          <span className="text-[10px] md:text-xs text-outline font-medium">📍 {inst.distance}</span>
                         </div>
                         <span className="material-symbols-outlined text-primary text-lg md:text-xl group-hover:translate-x-1 transition-transform">chevron_right</span>
                       </div>
@@ -564,7 +562,7 @@ const Home = () => {
                )}
              </div>
 
-             <button className="w-full py-3 md:py-5 bg-primary text-white font-black rounded-2xl hover:bg-primary-container active:scale-95 transition-all shadow-md shadow-primary/20 border-none">
+             <button className="w-full py-3 md:py-5 bg-primary text-white text-sm md:text-base font-bold rounded-lg hover:bg-primary-container active:scale-95 transition-all shadow-md shadow-primary/20 border-none">
                 기관 더보기
              </button>
           </section>
