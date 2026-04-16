@@ -9,6 +9,7 @@ import History from './pages/History';
 import MyPage from './pages/MyPage';
 import AdminDashboard from './pages/AdminDashboard';
 import CategoryDetail from './pages/CategoryDetail';
+import InstitutionDetail from './pages/InstitutionDetail';
 
 const PrivateRoute = ({ children }) => {
   const { user } = useAuth();
@@ -40,6 +41,7 @@ function App() {
           } />
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/category/:categoryName" element={<CategoryDetail />} />
+          <Route path="/institution/:id" element={<InstitutionDetail />} />
         </Routes>
       </AuthProvider>
     </Router>

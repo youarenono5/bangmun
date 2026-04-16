@@ -147,12 +147,7 @@ const Home = () => {
   }, [activeTab, searchTerm, activeFilter, activeSido, activeSigungu]);
 
   const handleInstitutionClick = (inst) => {
-    if (!user) {
-      alert('로그인 회원만 이용 가능합니다. 로그인 페이지로 이동합니다.');
-      navigate('/login');
-      return;
-    }
-    navigate(`/request/${inst.id}`, { state: { institution: inst, type: activeTab } });
+    navigate(`/institution/${inst.id}`, { state: { institution: inst, type: activeTab } });
   };
 
   return (
