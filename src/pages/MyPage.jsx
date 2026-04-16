@@ -551,10 +551,6 @@ const MyPage = () => {
           </div>
           <div className="flex items-center gap-8 border-l border-slate-100 pl-8">
             <span className="text-sm font-bold text-slate-900">{profile?.full_name}님 반갑습니다</span>
-            <button className="flex items-center gap-2 p-2.5 bg-red-50 text-red-600 rounded-xl hover:bg-red-100 transition-all font-bold text-xs" onClick={() => signOut().then(() => navigate('/login'))}>
-               <span className="material-symbols-outlined text-lg">logout</span>
-               로그아웃
-            </button>
           </div>
         </div>
       </nav>
@@ -584,6 +580,13 @@ const MyPage = () => {
                       {item.label}
                     </button>
                   ))}
+                  <button 
+                    onClick={() => signOut().then(() => navigate('/login'))}
+                    className="w-full flex items-center gap-4 px-5 py-4 rounded-2xl text-sm font-black transition-all bg-white text-red-400 hover:text-red-600 hover:bg-red-50 mt-4 border border-red-50"
+                  >
+                    <span className="material-symbols-outlined">logout</span>
+                    로그아웃
+                  </button>
                </nav>
             </div>
             
@@ -608,6 +611,13 @@ const MyPage = () => {
                   {t.label}
                 </button>
               ))}
+              <button 
+                onClick={() => signOut().then(() => navigate('/login'))}
+                className="flex items-center gap-2 px-4 py-2.5 rounded-2xl whitespace-nowrap text-xs font-black transition-all bg-red-50 text-red-600 border border-red-100"
+              >
+                <span className="material-symbols-outlined text-lg">logout</span>
+                로그아웃
+              </button>
             </div>
 
             <div className="animate-in slide-in-from-right duration-500">
