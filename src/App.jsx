@@ -8,6 +8,7 @@ import RequestForm from './pages/RequestForm';
 import History from './pages/History';
 import MyPage from './pages/MyPage';
 import AdminDashboard from './pages/AdminDashboard';
+import CategoryDetail from './pages/CategoryDetail';
 
 const PrivateRoute = ({ children }) => {
   const { user } = useAuth();
@@ -38,6 +39,7 @@ function App() {
             </PrivateRoute>
           } />
           <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/category/:categoryName" element={<CategoryDetail />} />
         </Routes>
       </AuthProvider>
     </Router>
