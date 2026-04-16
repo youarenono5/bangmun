@@ -113,15 +113,16 @@ const CategoryDetail = () => {
             </div>
           </div>
 
-          {/* Filter Buttons */}
-          <div className="flex gap-2 overflow-x-auto no-scrollbar pb-1 relative z-20">
-            <div className="relative">
+          {/* Filter Section */}
+          <div className="flex items-start gap-2 mb-6 md:mb-8 relative z-30">
+            {/* Sort Dropdown (Static) */}
+            <div className="relative shrink-0">
               <button 
                 onClick={(e) => {
                   e.stopPropagation();
                   setIsSortDropdownOpen(!isSortDropdownOpen);
                 }}
-                className={`flex items-center gap-1 px-4 py-2 rounded-lg text-[10px] md:text-xs font-bold border transition-all whitespace-nowrap ${sortOptions.includes(activeSort) ? 'bg-slate-900 text-white border-slate-900' : 'bg-white border-slate-200 text-slate-500'}`}
+                className={`flex items-center gap-1 px-3 md:px-4 py-2 rounded-lg text-[10px] md:text-xs font-bold border transition-all whitespace-nowrap ${sortOptions.includes(activeSort) ? 'bg-slate-900 text-white border-slate-900' : 'bg-white border-slate-200 text-slate-500'}`}
               >
                 {activeSort}
                 <span className={`material-symbols-outlined text-[14px] md:text-[16px] transition-transform ${isSortDropdownOpen ? 'rotate-180' : ''}`}>expand_more</span>
@@ -129,7 +130,7 @@ const CategoryDetail = () => {
 
               {/* Sort Dropdown Menu */}
               {isSortDropdownOpen && (
-                <div className="absolute top-full left-0 mt-1 w-40 bg-white border border-slate-100 rounded-lg shadow-xl z-50 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
+                <div className="absolute top-full left-0 mt-1.5 w-40 bg-white border border-slate-100 rounded-lg shadow-xl z-50 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
                   <div className="px-3 py-2 bg-slate-50 border-b border-slate-100">
                     <span className="text-[10px] font-black text-slate-400 uppercase tracking-tighter">정렬순서</span>
                   </div>
@@ -149,15 +150,18 @@ const CategoryDetail = () => {
               )}
             </div>
 
-            {['전문의', '진료받은 병원', '저장한 병원'].map(filter => (
-              <button 
-                key={filter} 
-                onClick={() => setActiveSort(filter)}
-                className={`px-4 py-2 rounded-lg text-[10px] md:text-xs font-bold border transition-all whitespace-nowrap ${activeSort === filter ? 'bg-slate-900 text-white border-slate-900' : 'bg-white border-slate-200 text-slate-500 hover:border-slate-300'}`}
-              >
-                {filter}
-              </button>
-            ))}
+            {/* Scrollable Filters */}
+            <div className="flex gap-2 overflow-x-auto no-scrollbar pb-1 flex-1">
+              {['전문의', '진료받은 병원', '저장한 병원'].map(filter => (
+                <button 
+                  key={filter} 
+                  onClick={() => setActiveSort(filter)}
+                  className={`px-4 py-2 rounded-lg text-[10px] md:text-xs font-bold border transition-all whitespace-nowrap ${activeSort === filter ? 'bg-slate-900 text-white border-slate-900' : 'bg-white border-slate-200 text-slate-500 hover:border-slate-300'}`}
+                >
+                  {filter}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 
