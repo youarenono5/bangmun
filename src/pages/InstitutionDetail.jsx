@@ -69,7 +69,30 @@ const InstitutionDetail = () => {
       { label: '예약시간 준수', count: Math.floor(institution.reviews * 0.6) },
       { label: '자세한 설명', count: Math.floor(institution.reviews * 0.75) },
     ]
-  };
+  const reviews = useMemo(() => [
+    { id: 1, user: '건강지킴이', date: '2024.04.12', rating: 5, content: '거동이 불편하신 아버지를 위해 신청했는데 선생님께서 너무 친절하게 진료해 주셨어요. 상세하게 설명해 주셔서 안심이 되었습니다.', isBest: true },
+    { id: 2, user: '토끼맘', date: '2024.04.10', rating: 5, content: '아이 방문진료는 처음이라 걱정 많았는데, 소아과 전문의 선생님이 오셔서 정말 꼼꼼하게 봐주셨어요. 처방받은 약 먹고 금방 나았습니다!', isBest: true },
+    { id: 3, user: '민수사랑', date: '2024.04.08', rating: 5, content: '대표원장님이 직접 오실 줄은 몰랐는데 정말 감동이었습니다. 진료 시간도 넉넉하게 써주시고 정성이 느껴지는 시간이었습니다.', isBest: true },
+    { id: 4, user: '강남주민', date: '2024.04.15', rating: 4, content: '예약 시간보다 5분 일찍 오셔서 준비해 주셨어요. 시간 약속 철저하신 게 제일 마음에 듭니다.', isBest: false },
+    { id: 5, user: '슬기로운생활', date: '2024.04.14', rating: 5, content: '집에서 편안하게 진료받을 수 있다는 게 이렇게 큰 혜택인 줄 몰랐네요. 앞으로도 계속 이용할 예정입니다.', isBest: false },
+    { id: 6, user: '초보맘', date: '2024.04.11', rating: 4, content: '선생님 인상이 너무 좋으시고 아이 눈높이에서 잘 설명해 주셔서 좋았습니다. 만족스러운 방문이었어요.', isBest: false },
+    { id: 7, user: '행복한일상', date: '2024.04.09', rating: 5, content: '허리 통증 때문에 고생했는데 방문해서 물리치료랑 같이 병행해 주시니 훨씬 살 것 같아요. 추천합니다.', isBest: false },
+    { id: 8, user: '우리가족', date: '2024.04.07', rating: 5, content: '할머님이 병원 가기 너무 힘들어하셨는데 집에서 이렇게 전문적인 진료를 받을 수 있어 너무 감사합니다.', isBest: false },
+  ], []);
+
+  const sortedReviews = useMemo(() => {
+    let list = [...reviews];
+    if (reviewSort === '최신순') {
+      return list.sort((a, b) => new Date(b.date.replace(/\./g, '-')) - new Date(a.date.replace(/\./g, '-')));
+    } else {
+      // 기본순: Best first, then by id/date
+      return list.sort((a, b) => {
+        if (a.isBest && !b.isBest) return -1;
+        if (!a.isBest && b.isBest) return 1;
+        return 0;
+      });
+    }
+  }, [reviews, reviewSort]);
 
   return (
     <div className="bg-white min-h-screen pb-24">
@@ -244,11 +267,11 @@ const InstitutionDetail = () => {
                 </div>
               </div>
 
-              {/* Review List Item Placeholder */}
+              {/* Review List Item */}
               <div className="space-y-6">
-                {[1, 2, 3].map(item => (
-                  <div key={item} className="space-y-3 border-b border-slate-50 pb-6 last:border-0 relative">
-                    {reviewSort === '기본순' && item <= 3 && (
+                {sortedReviews.map(item => (
+                  <div key={item.id} className="space-y-3 border-b border-slate-50 pb-6 last:border-0 relative">
+                    {reviewSort === '기본순' && item.isBest && (
                       <span className="inline-block bg-primary/10 text-primary text-[9px] font-black px-1.5 py-0.5 rounded-full mb-1">BEST REVIEW</span>
                     )}
                     <div className="flex justify-between items-start">
@@ -257,18 +280,18 @@ const InstitutionDetail = () => {
                             <span className="material-symbols-outlined text-slate-300 text-xl">person</span>
                           </div>
                           <div>
-                            <p className="text-[11px] md:text-xs font-black text-slate-800">user_{Math.random().toString(36).substring(7)}</p>
-                            <p className="text-[10px] text-slate-400 font-medium">2024.03.{Math.floor(Math.random() * 20) + 10}</p>
+                            <p className="text-[11px] md:text-xs font-black text-slate-800">{item.user}</p>
+                            <p className="text-[10px] text-slate-400 font-medium">{item.date}</p>
                           </div>
                        </div>
                        <div className="flex items-center gap-0.5 text-red-600">
                           {[1,2,3,4,5].map(s => (
-                            <span key={s} className="material-symbols-outlined text-[14px]" style={{ fontVariationSettings: s <= 4 ? "'FILL' 1" : "" }}>favorite</span>
+                            <span key={s} className="material-symbols-outlined text-[14px]" style={{ fontVariationSettings: s <= item.rating ? "'FILL' 1" : "" }}>favorite</span>
                           ))}
                        </div>
                     </div>
                     <p className="text-sm md:text-base text-slate-700 font-medium leading-relaxed">
-                      방문진료는 처음이라 걱정했는데, 원장님께서 너무 친절하게 설명해 주시고 꼼꼼하게 진찰해 주셔서 감동받았습니다. 거동이 불편하신 어머니께서도 편안하게 치료받으실 수 있어 정말 좋았어요. 감사합니다!
+                      {item.content}
                     </p>
                   </div>
                 ))}
