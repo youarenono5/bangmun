@@ -179,7 +179,7 @@ const RequestForm = () => {
                    type="date"
                    value={wishDate}
                    onChange={(e) => setWishDate(e.target.value)}
-                   className="flex-1 px-4 py-3 bg-white border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all font-bold"
+                   className="w-full md:flex-1 px-4 py-3 bg-white border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all font-bold text-slate-900 text-sm md:text-base min-h-[52px]"
                  />
                  <div className="flex p-1 bg-slate-100 rounded-lg md:w-48">
                    <button 
