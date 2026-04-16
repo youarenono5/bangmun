@@ -12,33 +12,33 @@ const CategoryDetail = () => {
   // States
   const [activeCategory, setActiveCategory] = useState(categoryName || '전체');
   const [activeSort, setActiveSort] = useState('기본순');
+  const [activeFilter, setActiveFilter] = useState('전체');
   const [isSortDropdownOpen, setIsSortDropdownOpen] = useState(false);
 
   const filteredInstitutions = useMemo(() => {
     let list = [...MOCK_INSTITUTIONS.doctor];
     
-    // Category Filtering
+    // 1. Category Filtering
     if (activeCategory !== '전체') {
       list = list.filter(inst => inst.category.includes(activeCategory));
     }
 
-    // Sort Logic
+    // 2. Additional Filter (전문의, 진료받은 병원, 저장한 병원)
+    if (activeFilter === '전문의') {
+      list = list.slice(0, Math.ceil(list.length * 0.7)); // Mock filtering
+    } else if (activeFilter === '진료받은 병원' || activeFilter === '저장한 병원') {
+      list = []; // Mock: empty list to show empty state
+    }
+
+    // 3. Sorting
     if (activeSort === '평점높은순') {
       list.sort((a, b) => b.rating - a.rating);
     } else if (activeSort === '리뷰많은순') {
       list.sort((a, b) => b.reviews - a.reviews);
     }
-
-    // Filter Logic (Mock implementation)
-    if (activeSort === '전문의') {
-      return list.slice(0, Math.ceil(list.length * 0.7));
-    }
-    if (activeSort === '진료받은 병원' || activeSort === '저장한 병원') {
-      return [];
-    }
     
     return list;
-  }, [activeCategory, activeSort]);
+  }, [activeCategory, activeSort, activeFilter]);
 
   const sortOptions = ['기본순', '평점높은순', '리뷰많은순'];
 
@@ -122,17 +122,17 @@ const CategoryDetail = () => {
                   e.stopPropagation();
                   setIsSortDropdownOpen(!isSortDropdownOpen);
                 }}
-                className={`flex items-center gap-1 px-3 md:px-4 py-2 rounded-lg text-[10px] md:text-xs font-bold border transition-all whitespace-nowrap ${sortOptions.includes(activeSort) ? 'bg-slate-900 text-white border-slate-900' : 'bg-white border-slate-200 text-slate-500'}`}
+                className={`flex items-center gap-1 h-[34px] md:h-[38px] px-3 md:px-4 rounded-lg text-[10px] md:text-xs font-bold border transition-all whitespace-nowrap bg-slate-900 text-white border-slate-900 shadow-sm`}
               >
                 {activeSort}
-                <span className={`material-symbols-outlined text-[14px] md:text-[16px] transition-transform ${isSortDropdownOpen ? 'rotate-180' : ''}`}>expand_more</span>
+                <span className={`material-symbols-outlined text-[14px] md:text-[18px] transition-transform ${isSortDropdownOpen ? 'rotate-180' : ''}`}>expand_more</span>
               </button>
 
               {/* Sort Dropdown Menu */}
               {isSortDropdownOpen && (
-                <div className="absolute top-full left-0 mt-1.5 w-40 bg-white border border-slate-100 rounded-lg shadow-xl z-50 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
-                  <div className="px-3 py-2 bg-slate-50 border-b border-slate-100">
-                    <span className="text-[10px] font-black text-slate-400 uppercase tracking-tighter">정렬순서</span>
+                <div className="absolute top-full left-0 mt-1.5 w-36 md:w-40 bg-white border border-slate-100 rounded-lg shadow-xl z-50 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
+                  <div className="px-3 py-1.5 md:py-2 bg-slate-50 border-b border-slate-100">
+                    <span className="text-[9px] md:text-[10px] font-black text-slate-400 uppercase tracking-tighter">정렬순서</span>
                   </div>
                   {sortOptions.map(option => (
                     <button
@@ -141,7 +141,7 @@ const CategoryDetail = () => {
                         setActiveSort(option);
                         setIsSortDropdownOpen(false);
                       }}
-                      className={`w-full text-left px-4 py-2.5 text-[11px] md:text-sm font-bold transition-colors ${activeSort === option ? 'text-primary bg-primary/5' : 'text-slate-600 hover:bg-slate-50'}`}
+                      className={`w-full text-left px-3 md:px-4 py-2 md:py-2.5 text-[11px] md:text-sm font-bold transition-colors ${activeSort === option ? 'text-primary bg-primary/5' : 'text-slate-600 hover:bg-slate-50'}`}
                     >
                       {option}
                     </button>
@@ -155,8 +155,8 @@ const CategoryDetail = () => {
               {['전문의', '진료받은 병원', '저장한 병원'].map(filter => (
                 <button 
                   key={filter} 
-                  onClick={() => setActiveSort(filter)}
-                  className={`px-4 py-2 rounded-lg text-[10px] md:text-xs font-bold border transition-all whitespace-nowrap ${activeSort === filter ? 'bg-slate-900 text-white border-slate-900' : 'bg-white border-slate-200 text-slate-500 hover:border-slate-300'}`}
+                  onClick={() => setActiveFilter(activeFilter === filter ? '전체' : filter)}
+                  className={`h-[34px] md:h-[38px] px-3 md:px-4 rounded-lg text-[10px] md:text-xs font-bold border transition-all whitespace-nowrap ${activeFilter === filter ? 'bg-primary/5 border-primary text-primary shadow-[0_0_0_1px_rgba(25,118,210,1)]' : 'bg-white border-slate-200 text-slate-500 hover:border-slate-300'}`}
                 >
                   {filter}
                 </button>
