@@ -1,3 +1,23 @@
+export const REGION_DATA = [
+  { name: '서울', sub: ['강남구', '강서구', '강동구', '강북구', '관악구', '광진구', '구로구', '금천구', '노원구', '도봉구', '동대문구', '동작구', '마포구', '서대문구', '서초구', '성동구', '성북구', '송파구', '양천구', '영등포구', '용산구', '은평구', '종로구', '중구', '중랑구'] },
+  { name: '경기', sub: ['수원시', '고양시', '용인시', '성남시', '부천시', '화성시', '안산시', '남양주시', '안양시', '평택시', '시흥시', '파주시', '의정부시', '김포시', '광명시', '광주시', '군포시', '이천시', '오산시', '하남시', '양주시', '구리시', '안성시', '포천시', '의왕시', '여주시', '양평군', '동두천시', '가평군', '과천시', '연천군'] },
+  { name: '인천', sub: ['계양구', '미추홀구', '남동구', '동구', '부평구', '서구', '연수구', '중구', '강화군', '옹진군'] },
+  { name: '부산', sub: ['강서구', '금정구', '남구', '동구', '동래구', '부산진구', '북구', '사상구', '사하구', '서구', '수영구', '연제구', '영도구', '중구', '해운대구', '기장군'] },
+  { name: '대구', sub: ['남구', '달서구', '동구', '북구', '서구', '수성구', '중구', '달성군', '군위군'] },
+  { name: '광주', sub: ['광산구', '남구', '동구', '북구', '서구'] },
+  { name: '대전', sub: ['대덕구', '동구', '서구', '유성구', '중구'] },
+  { name: '울산', sub: ['남구', '동구', '북구', '중구', '울주군'] },
+  { name: '세종', sub: ['세종시'] },
+  { name: '강원', sub: ['춘천시', '원주시', '강릉시', '동해시', '태백시', '속초시', '삼척시', '홍천군', '횡성군', '영월군', '평창군', '정선군', '철원군', '화천군', '양구군', '인제군', '고성군', '양양군'] },
+  { name: '충북', sub: ['청주시', '충주시', '제천시', '보은군', '옥천군', '영동군', '증평군', '진천군', '괴산군', '음성군', '단양군'] },
+  { name: '충남', sub: ['천안시', '공주시', '보령시', '아산시', '서산시', '논산시', '계룡시', '당진시', '금산군', '부여군', '서천군', '청양군', '홍성군', '예산군', '태안군'] },
+  { name: '전북', sub: ['전주시', '군산시', '익산시', '정읍시', '남원시', '김제시', '완주군', '진안군', '무주군', '장수군', '임실군', '순창군', '고창군', '부안군'] },
+  { name: '전남', sub: ['목포시', '여수시', '순천시', '나주시', '광양시', '담양군', '곡성군', '구례군', '고흥군', '보성군', '화순군', '장흥군', '강진군', '해남군', '영암군', '무안군', '함평군', '영광군', '장성군', '완도군', '진도군', '신안군'] },
+  { name: '경북', sub: ['포항시', '경주시', '김천시', '안동시', '구미시', '영주시', '영천시', '상주시', '문경시', '경산시', '의성군', '청송군', '영양군', '영덕군', '청도군', '고령군', '성주군', '칠곡군', '예천군', '봉화군', '울진군', '울릉군'] },
+  { name: '경남', sub: ['창원시', '진주시', '통영시', '사천시', '김해시', '밀양시', '거제시', '양산시', '의령군', '함안군', '창녕군', '고성군', '남해군', '하동군', '산청군', '함양군', '거창군', '합천군'] },
+  { name: '제주', sub: ['제주시', '서귀포시'] },
+];
+
 export const MOCK_INSTITUTIONS = {
   doctor: [
     { id: 1, name: '바른마음 내과의원', category: '내과, 가정의학과, 검진센터', symptoms: '감기, 기침, 복통, 소화불량, 고혈압, 당뇨', rating: 4.9, reviews: 128, distance: '1.2km', image: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=400', status: 'open', region: '서울' },
@@ -40,8 +60,12 @@ export const MOCK_INSTITUTIONS = {
   rehab: [
     { id: 4, name: '서울 연세 재활의학센터', category: '재활의학과, 도수치료, 통증의학', symptoms: '허리디스크, 목디스크, 관절염, 오십견, 거북목', rating: 4.8, reviews: 342, distance: '0.8km', image: 'https://images.unsplash.com/photo-1576091160550-217359f41f48?auto=format&fit=crop&q=80&w=400', status: 'open', region: '서울', sigungu: '서대문구' },
     { id: 5, name: '튼튼 마디 재활원', category: '노인재활, 거동불편 케어', symptoms: '중풍, 뇌졸중 후유증, 보행훈련, 근력강화', rating: 4.6, reviews: 56, distance: '3.1km', image: 'https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&q=80&w=400', status: 'open', region: '경기', sigungu: '수원시' },
+    { id: 41, name: '굿모닝 방문재활센터', category: '방문재활, 인지재활', symptoms: '치매케어, 운동치료, 노인맞춤재활', rating: 4.9, reviews: 88, distance: '1.5km', image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&q=80&w=400', status: 'open', region: '서울', sigungu: '강남구' },
+    { id: 42, name: '해ッピー 홈 케어', category: '방문재활, 가사지원', symptoms: '보행훈련, 일상동작 지도, 영양관리', rating: 4.7, reviews: 156, distance: '2.4km', image: 'https://images.unsplash.com/photo-1581056770617-bc73070445d4?auto=format&fit=crop&q=80&w=400', status: 'open', region: '경기', sigungu: '성남시' },
     { id: 7, name: '연세 바른 재활의학과', category: '재활의학과, 정형외과, 도수치료', symptoms: '어깨통증, 골반교정, 체형교정, 스포츠부상', rating: 4.8, reviews: 856, distance: '1.2km', image: 'https://images.unsplash.com/photo-1597452485669-2c7bb5fef90d?auto=format&fit=crop&q=80&w=400', status: 'open', region: '서울', sigungu: '강남구' },
     { id: 8, name: '다움 방문재활센터', category: '방문재활, 인지재활, 운동치료', symptoms: '치매예방, 거동불편 케어, 일상동작 훈련, 연하장애', rating: 4.9, reviews: 112, distance: '2.4km', image: 'https://images.unsplash.com/photo-1576091160550-217359f41f48?auto=format&fit=crop&q=80&w=400', status: 'open', region: '부산', sigungu: '해운대구' },
+    { id: 43, name: '스마트 시니어 재활', category: '노인재활, 방문운동', symptoms: '근감소증 예방, 파킨슨 재활, 균형훈련', rating: 5.0, reviews: 45, distance: '4.2km', image: 'https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&q=80&w=400', status: 'open', region: '서울', sigungu: '광진구' },
+    { id: 44, name: '참사랑 방문치료센터', category: '물리치료, 방무재활', symptoms: '수술 후 재활, 통증관리, 근력회복', rating: 4.8, reviews: 267, distance: '1.8km', image: 'https://images.unsplash.com/photo-1597452485669-2c7bb5fef90d?auto=format&fit=crop&q=80&w=400', status: 'open', region: '경기', sigungu: '용인시' },
   ]
 };
 

@@ -10,6 +10,7 @@ import MyPage from './pages/MyPage';
 import AdminDashboard from './pages/AdminDashboard';
 import CategoryDetail from './pages/CategoryDetail';
 import InstitutionDetail from './pages/InstitutionDetail';
+import RegionDetail from './pages/RegionDetail';
 
 const PrivateRoute = ({ children }) => {
   const { user } = useAuth();
@@ -42,6 +43,7 @@ function App() {
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/category/:categoryName" element={<CategoryDetail />} />
           <Route path="/institution/:id" element={<InstitutionDetail />} />
+          <Route path="/region/:sido/:sigungu" element={<RegionDetail />} />
         </Routes>
       </AuthProvider>
     </Router>
