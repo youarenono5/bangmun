@@ -48,3 +48,25 @@
     @apply bg-surface;
   }
 }
+
+/* Date Input Visibility Fixes */
+input[type="date"]::-webkit-datetime-edit,
+input[type="date"]::-webkit-datetime-edit-text,
+input[type="date"]::-webkit-datetime-edit-month-field,
+input[type="date"]::-webkit-datetime-edit-day-field,
+input[type="date"]::-webkit-datetime-edit-year-field {
+  color: #0f172a !important; /* slate-900 */
+}
+
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 1 !important;
+  display: block !important;
+}
+
+input[type="date"] {
+  color: #0f172a !important;
+  color-scheme: light !important;
+}
+
+
