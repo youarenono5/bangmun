@@ -110,7 +110,7 @@ const InstitutionDetail = () => {
           </div>
           
           <div className="space-y-1">
-            <h1 className="text-2xl md:text-3xl font-black text-slate-900 leading-tight">{institution.name}</h1>
+            <h1 className="text-2xl md:text-3xl font-bold text-slate-900 leading-tight">{institution.name}</h1>
             <div className="flex items-center gap-3">
               <span className="bg-green-50 text-green-600 px-2 py-1 rounded text-[10px] md:text-xs font-medium uppercase">예약가능</span>
               <div className="flex items-center gap-1 text-red-600 font-bold">
