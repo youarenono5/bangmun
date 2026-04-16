@@ -12,6 +12,7 @@ const CategoryDetail = () => {
   // States
   const [activeCategory, setActiveCategory] = useState(categoryName || '전체');
   const [activeSort, setActiveSort] = useState('기본순');
+  const [isSortDropdownOpen, setIsSortDropdownOpen] = useState(false);
 
   const filteredInstitutions = useMemo(() => {
     let list = [...MOCK_INSTITUTIONS.doctor];
@@ -21,18 +22,25 @@ const CategoryDetail = () => {
       list = list.filter(inst => inst.category.includes(activeCategory));
     }
 
-    // Sort/Filter Logic (Mock implementation)
+    // Sort Logic
+    if (activeSort === '평점높은순') {
+      list.sort((a, b) => b.rating - a.rating);
+    } else if (activeSort === '리뷰많은순') {
+      list.sort((a, b) => b.reviews - a.reviews);
+    }
+
+    // Filter Logic (Mock implementation)
     if (activeSort === '전문의') {
-      // Mock logic: randomly filter some or prioritize based on mock flag if existed
       return list.slice(0, Math.ceil(list.length * 0.7));
     }
     if (activeSort === '진료받은 병원' || activeSort === '저장한 병원') {
-      // Return empty or few items for mock
       return [];
     }
     
     return list;
   }, [activeCategory, activeSort]);
+
+  const sortOptions = ['기본순', '평점높은순', '리뷰많은순'];
 
   const handleInstitutionClick = (inst) => {
     if (!user) {
@@ -44,7 +52,7 @@ const CategoryDetail = () => {
   };
 
   return (
-    <div className="bg-[#F8FAFC] min-h-screen pb-20 md:pb-0">
+    <div className="bg-[#F8FAFC] min-h-screen pb-20 md:pb-0" onClick={() => setIsSortDropdownOpen(false)}>
       {/* Desktop Header Sync */}
       <nav className="hidden md:flex fixed top-0 w-full z-50 glass-nav shadow-[0_4px_20px_rgba(0,0,0,0.04)] h-[70px] justify-center items-center px-6 max-w-full">
         <div className="flex justify-between items-center w-full max-w-[1280px]">
@@ -106,8 +114,42 @@ const CategoryDetail = () => {
           </div>
 
           {/* Filter Buttons */}
-          <div className="flex gap-2 overflow-x-auto no-scrollbar pb-1">
-            {['기본순', '전문의', '진료받은 병원', '저장한 병원'].map(filter => (
+          <div className="flex gap-2 overflow-x-auto no-scrollbar pb-1 relative z-20">
+            <div className="relative">
+              <button 
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsSortDropdownOpen(!isSortDropdownOpen);
+                }}
+                className={`flex items-center gap-1 px-4 py-2 rounded-lg text-[10px] md:text-xs font-bold border transition-all whitespace-nowrap ${sortOptions.includes(activeSort) ? 'bg-slate-900 text-white border-slate-900' : 'bg-white border-slate-200 text-slate-500'}`}
+              >
+                {activeSort}
+                <span className={`material-symbols-outlined text-[14px] md:text-[16px] transition-transform ${isSortDropdownOpen ? 'rotate-180' : ''}`}>expand_more</span>
+              </button>
+
+              {/* Sort Dropdown Menu */}
+              {isSortDropdownOpen && (
+                <div className="absolute top-full left-0 mt-1 w-40 bg-white border border-slate-100 rounded-lg shadow-xl z-50 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
+                  <div className="px-3 py-2 bg-slate-50 border-b border-slate-100">
+                    <span className="text-[10px] font-black text-slate-400 uppercase tracking-tighter">정렬순서</span>
+                  </div>
+                  {sortOptions.map(option => (
+                    <button
+                      key={option}
+                      onClick={() => {
+                        setActiveSort(option);
+                        setIsSortDropdownOpen(false);
+                      }}
+                      className={`w-full text-left px-4 py-2.5 text-[11px] md:text-sm font-bold transition-colors ${activeSort === option ? 'text-primary bg-primary/5' : 'text-slate-600 hover:bg-slate-50'}`}
+                    >
+                      {option}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {['전문의', '진료받은 병원', '저장한 병원'].map(filter => (
               <button 
                 key={filter} 
                 onClick={() => setActiveSort(filter)}
